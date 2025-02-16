@@ -1,0 +1,271 @@
+.ResponsiveItem {
+  display: flex;
+  align-items: center;
+  gap:4px;
+  white-space: nowrap;
+}
+
+.Responsive-TabBar  {
+  display: flex;
+  gap:8px;
+  overflow: overlay;
+  background: #f1f1f1;
+  border-radius: 8px;
+  justify-content: space-between;
+  padding: 8px;
+  height: auto;
+  margin-top: 10px;
+}
+.ItemButton {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+button.ItemButton:hover {
+  background-color: white;
+  border-radius: 8px;
+}
+.ItemButton1 {
+  outline:none;
+  border: none;
+  /* width: auto; */
+  /* transition: all  0.5s ease; */
+  background-color: rgba(232, 225, 216, 0.87);
+  transform: scale(1);
+  transition: all 0.1s ease-out;
+  text-align: start;
+  font-size: larger;
+}
+.ItemButton1.collapse {
+  outline:none;
+  border: none;
+  /* width: auto; */
+  transform: scale(0);
+ 
+}
+
+.Sidebar {
+ display: flex;
+ flex-direction: column;
+  height: 100vh;
+  background-color: white;
+  transition: all  0.5s ease;
+  width: 240px;
+  box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  border-radius: 8px;
+  padding: 20px;
+}
+.Sidebar.Collapse {
+  min-height: 100vh;
+  /* background-color: red; */
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+  /* background-color: blue; */
+  width: 50px;
+}
+.Main {
+ display: flex;
+ gap:10px;
+
+}
+.SideBarButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  position:absolute;
+  top:50vh;
+  right:-15px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: white;
+
+}
+.SideBarButton svg {
+  transition: transform 0.5s ease-in-out;
+}
+
+.SideBarButton .rotated {
+  transform: rotate(180deg);
+}
+.ProjectSetup  {
+  overflow: overlay;
+  display: flex;
+  flex-direction: column;
+}
+
+.SideBarButton1 {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap:10px;
+  background-color:rgba(232, 225, 216, 0.87);
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  /* height: 100vh; */
+}
+.SideBarButton1  > button:hover {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.SideBarButton1 > div > svg {
+  height: 36px;
+  width: 36px;
+}
+.ParentSideBar {
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+.SpacingBetween {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+}
+.SpacingBetween1 {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items: center;
+  gap:10px;
+  font-size:larger ;
+  cursor: pointer;
+}
+.box {
+  margin-top: 10px;
+  box-shadow: 0 0 20px 0 #2426701a;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 20px;
+}
+.SpacingBetween2 {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items: center;
+  gap:10px;
+  font-size:larger;
+  max-width: 100%;
+  border: 1px solid #d5d5d5;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.ProjectSetUpSpacing {
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+}
+.Attached {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Attached1 > div {
+  width: 45%;
+  margin-right: 4%;
+}
+.Attached1 {
+  border: 1px solid #d5d5d5;
+  background-color: #fcfcfc;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  /* transform: scale(1); */
+  opacity: 1;
+  /* max-height: 1000px; */
+  transition:all 0.2s ease-in-out;
+  gap:10px;
+  max-height: 300px;
+}
+.Attached1.Collapsed1 {
+  transform: scale(0);
+  /* overflow: hidden; */
+  max-height: 0px;
+  padding: 0px;
+}
+
+input {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  /* padding: 8px; */
+  padding: 10px 8px;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  background-color: white;
+  position: relative;
+  width: 100%;
+}
+
+select {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  /* padding: 8px; */
+  padding: 10px 8px;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  background-color: white;
+  position: relative;
+  width: 100%;
+}
+/* From Uiverse.io by guilhermeyohan */ 
+
+
+.selectBox {
+  width: 100%;
+  /* background-color: antiquewhite; */
+  
+  font-size: 20px;
+  gap: 10px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  padding: 10px 0px;
+  /* margin-left: 10px; */
+}
+.selectBox:hover {
+  /* width: 100%; */
+  background-color: rgba(232, 225, 216, 0.87);
+}
+input[type="checkbox"] {
+  transform: scale(1.6); /* Increase size */
+}
+
+.ProjectSetUp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.IconJustify {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.Icon {
+  display: flex;
+  align-items: center;
+  gap:4px;
+}
+.Profile {
+  background-color: red;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+}
