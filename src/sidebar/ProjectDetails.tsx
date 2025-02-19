@@ -3,7 +3,7 @@ import { titles } from "../data/title";
 import { IconButton } from "../components/IconButton";
 export function ProjectDetails() {
   return (
-    <div>
+    <div className="heightFixed">
       <div className="ProjectSetUp">
         <div style={{fontSize:"20px"}}>Project Setup</div>
         <div className="IconJustify">
