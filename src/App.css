@@ -377,6 +377,7 @@ table {
   position: relative;
   display: flex;
   overflow: overlay;
+  width: 100%;
 
 }
 thead {
@@ -389,10 +390,12 @@ thead {
 }
 table {
   overflow: overlay;
+  table-layout: fixed;
 }
 th, td {
   border: 1px solid gray; /* Borders around individual cells */
   padding: 10px;
+  width: 200px;
 }
 table > thead  {
  
