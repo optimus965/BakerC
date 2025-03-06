@@ -149,6 +149,7 @@ button.ItemButton:hover {
   border: 1px solid #e2e2e2;
   border-radius: 8px;
   padding: 20px;
+  /* width: 100%; */
 }
 .SpacingBetween2 {
   margin-top: 10px;
@@ -277,9 +278,11 @@ input[type="checkbox"] {
 }
 .SpacingBetween3 {
   display: flex;
-  /* align-items: center; */
- 
+  align-items: center;
+
+  justify-content: center;
   /* padding: ; */
+
 }
 .SpacingBetween3h {
   display: flex;
@@ -340,7 +343,7 @@ input[type="checkbox"] {
   align-items: center;
   border-radius: 4px;
   background-color: transparent;
-
+  white-space: nowrap;
 }
 .SpacingBetween8:hover ,.SpacingBetween8:hover > svg > path {
   background-color: #F59794;
@@ -406,8 +409,8 @@ table td {
   padding: 10px 20px;
 }
 .tableData {
-  position: sticky !important;
-  z-index: 1 !important;
+  position: sticky ;
+  z-index: 1;
   right:0px;
   background-color: white;
   text-align: right;
@@ -420,9 +423,171 @@ table > thead {
   z-index: 2;
   top:0px;
 }
-
 .OneMore {
   display: flex;
   flex-direction: column;
   overflow: auto;
+}
+.SpacingBetween10 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+}
+.SpacingBetween11 {
+  display: flex;
+  white-space: nowrap;
+
+}
+.SecondTable {
+  overflow: overlay;
+  position: relative;
+  height: calc(100vh - 200px);
+}
+.SecondTable > table {
+  table-layout: fixed;
+  width: 100%;
+
+}
+.SecondTable > table thead {
+  position: sticky;
+  top:0px;
+  z-index: 3;
+}
+.SecondTable   td {
+  border: none;
+  border-bottom: 1px solid #d5d5d5;
+  /* padding: 20px; */
+}
+.SecondTable > table tr td {
+  min-width: 159px;
+}
+.SecondTable > table  tr td:nth-child(2) {
+  z-index: 2;
+  position: sticky;
+  left: 179px;
+}
+.SecondTable > table tr td:nth-child(2)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #d5d5d5;
+}
+.SecondTable > table  tr td:nth-child(1) {
+  position: sticky;
+  left: 0px;
+  z-index: 2;
+}
+
+.SecondTable > table tbody tr td:nth-child(2),.SecondTable > table tbody tr td:nth-child(1) {
+  position: sticky;
+  background-color: white;
+}
+.SecondTable > table thead tr td:nth-child(2),.SecondTable > table thead tr td:nth-child(1) {
+  position: sticky;
+  background-color: var(--table-header-bcolor);
+}
+.SecondTable table td {
+  padding:10px 10px;
+}
+.Form3 {
+  margin-top: 10px;
+  box-shadow: 0 0 20px 0 #2426701a;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 20px;
+  position: fixed;
+  /* height: 100vh; */
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  background: white;
+  z-index: 9999;
+  top:5%;
+  left: 25%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 0px 4px rgba(52, 52, 53, 0.185);
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  text-align: left;
+  z-index: 4;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  /* justify-content: center; */
+}
+.Form3  div {
+  width: 40%;
+}
+.Form3 > div button {
+  padding: 12.5px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #2ba8fb;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  width: auto;
+}
+.Form3 > div button:hover {
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.0);
+}
+.Form3 > div button:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}
+.box1 {
+  margin-top: 10px;
+  box-shadow: 0 0 20px 0 #2426701a;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 8px;
+  position: relative;
+  width: 290px;
+  min-height: 38px;
+  /* width: 100%; */
+}
+.box1 > select {
+  text-decoration: none;
+  position: absolute;
+  background: none;
+  padding: 0px;
+  border: none;
+  outline: none;
+  width: 20px;
+  right: 0px;
+  top: 35%;
+
+}
+.SpacingBetween12 {
+  display: flex;
+  flex-wrap: wrap;
+  gap:6px;
+
+}
+.SpacingBetween11 input[type="checkbox"]  {
+  font-size: 12px;
+  transform: scale(1.1);
+}
+.SpacingBetween11 .selectBox {
+  background-color: white;
+  font-size: medium;
+}
+.SpacingBetween11 {
+  font-size: 15px;
+}
+.SearchTerm input {
+  width: 50%;
 }
