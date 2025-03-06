@@ -1,4 +1,4 @@
-import React, { JSX, useState } from "react";
+import React, { useState } from "react";
 import { Header } from "../projectsetup/Header";
 enum unitType {
   BedRoom = "BedRoom",
@@ -87,6 +87,7 @@ export function UnitListView() {
           AllocatedStatus: "",
           CoOpAgent: "",
         };
+        console.log(prev)
         return data;
       });
       setVisible(!visible);
