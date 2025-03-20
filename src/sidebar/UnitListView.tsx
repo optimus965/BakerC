@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../projectsetup/Header";
+import axios from "axios";
 enum unitType {
   BedRoom = "BedRoom",
   Studio = "Studio",
   Other = "Other",
 }
+const API_BASE_URL: string = "http://localhost:3001";
 enum Standard {
   Luxury = "Luxury",
   Deluxe = "Deluxe",
@@ -21,22 +23,25 @@ interface Data {
   // MaximumParkingCountNumber: number;
   // UnitPricePerSqFeet: number;
   BuildingName: string;
-  unitName: string;
-  status: string;
+  UnitName: string;
+  Status: string;
   AllocatedStatus: string;
   CoOpAgent: string;
-  level2Status: string;
+  Level2Status: string;
   tags?: string[];
 }
 export function UnitListView() {
   const [data, setData] = useState<Data[]>([]);
   const [otherTable, setOtherTable] = useState<boolean>(true);
   const [otherTable1, setOtherTable1] = useState<boolean>(false);
-  const [searchTerm,setSearchTerm] = useState<string>(''); 
-  const filteredData = data.filter(item =>
-    searchTerm === "" || item.status.toLowerCase() === searchTerm.toLowerCase())
-    console.log(searchTerm)
-    console.log(filteredData)
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const filteredData = data.filter(
+    (item) =>
+      searchTerm === "" ||
+      item.Status.toLowerCase() === searchTerm.toLowerCase()
+  );
+  console.log(searchTerm);
+  console.log(filteredData);
   const [current, setCurrent] = useState<Data>({
     UnitType: unitType.Other,
     Floor: 0,
@@ -50,23 +55,25 @@ export function UnitListView() {
     // MaximumParkingCountNumber: 0,
     // UnitPricePerSqFeet: 0,
     BuildingName: "Antilia",
-    unitName: "",
-    status: "",
-    level2Status: "",
+    UnitName: "",
+    Status: "",
+    Level2Status: "",
     AllocatedStatus: "",
     CoOpAgent: "",
   });
   const [visible, setVisible] = useState<Boolean>(false);
-  function handleClick() {
+  async function handleClick() {
     if (
-      current.unitName.length > 0 &&
-      current.status.length > 0 &&
-      current.level2Status.length > 0
+      current.UnitName.length > 0 &&
+      current.Status.length > 0 &&
+      current.Level2Status.length > 0
     ) {
       setData((prev) => {
         prev.push(current);
-        return data;
+        return prev;
       });
+      const data1 = await axios.post(`${API_BASE_URL}/unit-list-view`, current);
+      console.log(data1, "I am from the Current Object");
       setCurrent((prev) => {
         const data: Data = {
           UnitType: unitType.Other,
@@ -81,25 +88,40 @@ export function UnitListView() {
           // MaximumParkingCountNumber: 0,
           // UnitPricePerSqFeet: 0,
           BuildingName: "Antilia",
-          unitName: "",
-          status: "",
-          level2Status: "",
+          UnitName: "",
+          Status: "",
+          Level2Status: "",
           AllocatedStatus: "",
           CoOpAgent: "",
         };
-        console.log(prev)
+        console.log(prev);
         return data;
       });
-      setVisible(!visible);
+      console.log(visible)
+
     }
+    setVisible(!visible);
   }
+  useEffect(() => {
+    const data = async () => {
+      try {
+        const data1: Data[] = (await axios.get(`${API_BASE_URL}/unit-list-view`)).data;
+        setData(data1);
+        console.log(data1);
+      } catch (err) {
+        console.log("there is some error from the backend");
+        console.log(err);
+      }
+    };
+    data();
+  }, []);
   function handleChange(
     event: React.ChangeEvent<HTMLSelectElement>,
     unitName: string
   ) {
     console.log("hello, world");
     const data1 = data.map((item) => {
-      if (item.unitName === unitName) {
+      if (item.UnitName === unitName) {
         return {
           ...item,
           tags: [...(item.tags || []), event.target.value],
@@ -130,7 +152,21 @@ export function UnitListView() {
           </svg>
         }
       />
-      <div className="SearchTerm"><label htmlFor="delivery" className="control-label ">Search</label><div> <input value={searchTerm} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setSearchTerm(e.target.value)} type="text" /></div></div>
+      <div className="SearchTerm">
+        <label htmlFor="delivery" className="control-label ">
+          Search
+        </label>
+        <div>
+          {" "}
+          <input
+            value={searchTerm}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSearchTerm(e.target.value)
+            }
+            type="text"
+          />
+        </div>
+      </div>
       <div className="SpacingBetween7">
         <div className="SpacingBetween11">
           <div className="selectBox">
@@ -149,7 +185,11 @@ export function UnitListView() {
           <div className="selectBox">
             {" "}
             <div>
-              <input checked={otherTable1} onChange={()=>setOtherTable1(!otherTable1)} type="checkbox" />
+              <input
+                checked={otherTable1}
+                onChange={() => setOtherTable1(!otherTable1)}
+                type="checkbox"
+              />
             </div>
             <label htmlFor="delivery" className="control-label ">
               Allocations
@@ -192,26 +232,28 @@ export function UnitListView() {
             </label>
           </div>
         </div>
-        <div className="SpacingBetween1"><div className="SpacingBetween8" onClick={() => setVisible(!visible)}>
-          Add New
+        <div className="SpacingBetween1">
+          <div className="SpacingBetween8" onClick={() => setVisible(!visible)}>
+            Add New
+          </div>
+
+          <div className="SpacingBetween8">
+            <svg
+              fill="none"
+              viewBox="0 0 24 24"
+              height="24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#DA291C"
+                d="M5 20H19V18H5V20ZM19 9H15V3H9V9H5L12 16L19 9Z"
+              ></path>
+            </svg>
+            Download Units List
+          </div>
         </div>
-       
-        <div className="SpacingBetween8">
-          <svg
-            fill="none"
-            viewBox="0 0 24 24"
-            height="24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill="#DA291C"
-              d="M5 20H19V18H5V20ZM19 9H15V3H9V9H5L12 16L19 9Z"
-            ></path>
-          </svg>
-          Download Units List
-        </div></div>
- {visible && (
+        {visible && (
           <div className="Form3">
             <div>
               <label>UnitType</label>
@@ -232,11 +274,11 @@ export function UnitListView() {
               {" "}
               <label>Status</label>
               <input
-                value={current?.status}
+                value={current?.Status}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setCurrent((prev) => ({
                     ...prev,
-                    status: e.target.value,
+                    Status: e.target.value,
                   }))
                 }
               />
@@ -244,11 +286,11 @@ export function UnitListView() {
             <div>
               <label>Level 2 Status</label>
               <input
-                value={current?.level2Status}
+                value={current?.Level2Status}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setCurrent((prev) => ({
                     ...prev,
-                    level2Status: e.target.value,
+                    Level2Status: e.target.value,
                   }))
                 }
               />
@@ -327,11 +369,11 @@ export function UnitListView() {
             <div>
               <label>Unit Name</label>
               <input
-                value={current?.unitName}
+                value={current?.UnitName}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setCurrent((prev) => ({
                     ...prev,
-                    unitName: e.target.value,
+                    UnitName: e.target.value,
                   }))
                 }
               />
@@ -341,8 +383,6 @@ export function UnitListView() {
             </div>
           </div>
         )}
-
-
       </div>
       <div className="SecondTable">
         <table>
@@ -372,9 +412,9 @@ export function UnitListView() {
           <tbody>
             {filteredData.map((item) => {
               return (
-                <tr key={item.unitName}>
-                  <td>{item.unitName}</td>
-                  <td>{item.status}</td>
+                <tr key={item.UnitName}>
+                  <td>{item.UnitName}</td>
+                  <td>{item.Status}</td>
                   {otherTable && (
                     <>
                       <td>{item.Floor}</td>
@@ -389,19 +429,19 @@ export function UnitListView() {
                       <td>{item.CoOpAgent}</td>
                     </>
                   )}
-                  <td>{item.level2Status}</td>
+                  <td>{item.Level2Status}</td>
                   <td>
                     <div className="box1">
                       <div className="SpacingBetween12">
                         {item.tags &&
-                          item?.tags.map((item) => {
-                            return <div>{item}</div>;
+                          item?.tags.map((item, index) => {
+                            return <div key={index}>{item}</div>;
                           })}
                       </div>
                       <select
                         onChange={(
                           event: React.ChangeEvent<HTMLSelectElement>
-                        ) => handleChange(event, item.unitName)}
+                        ) => handleChange(event, item.UnitName)}
                       >
                         <option>hello world</option>
                         <option>helo world1</option>

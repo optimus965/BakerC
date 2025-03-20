@@ -133,6 +133,14 @@ button.ItemButton:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: start;
+  
+}
+.SpacingBetween13 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
 }
 .SpacingBetween1 {
   display: flex;
@@ -280,7 +288,7 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
 
-  justify-content: center;
+  /* justify-content: center; */
   /* padding: ; */
 
 }
@@ -328,7 +336,7 @@ input[type="checkbox"] {
 }
 .SpacingBetween7 {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   gap:20px;
 } 
@@ -396,7 +404,7 @@ table {
   table-layout: fixed;
 }
 th, td {
-  border: 1px solid gray; /* Borders around individual cells */
+  border: 3px solid gray; /* Borders around individual cells */
   padding: 10px;
   width: 200px;
 }
@@ -409,11 +417,22 @@ table td {
   padding: 10px 20px;
 }
 .tableData {
-  position: sticky ;
+  position: sticky;
   z-index: 1;
   right:0px;
   background-color: white;
   text-align: right;
+  min-width: 150px;
+}
+.tableData::after {
+  content: "";
+  width: 2px;
+  position: absolute;
+  left:0;
+  top: 0;
+  text-align: right;
+  height: 100%;
+  background-color: gray;
 }
 th.tableData {
   background-color: var(--table-header-bcolor);
@@ -590,4 +609,114 @@ table > thead {
 }
 .SearchTerm input {
   width: 50%;
+}
+.SpacingBetweenSearch {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  border: 1px solid gray;
+  padding: 2px;
+  width: 350px;
+  border-radius: 3px;
+}
+.SpacingBetweenSearch > input {
+  border: none;
+  outline: none;
+
+}
+
+.GeneralWorkSheetsHeader {
+  display: flex;
+  border: 1px solid #e0e0e0;
+  line-height: 21px;
+  background-color: blanchedalmond;
+  font-size: medium;
+  background-color: #fff;
+  border-radius: 4px;
+  margin-top: 10px;
+  align-items: center;
+}
+.GeneralWorkSheetsHeader  >  div  {
+  /* min-width: 150px; */
+  padding: 10px 23px;
+  text-align: left;
+  flex: 1 1;
+}
+.GeneralWorkSheetsHeader >  div:last-child {
+  text-align: center;
+  min-width: 130px;
+}
+.GeneralWorkSheetsHeader >  div:nth-child(2) {
+  text-align: left;
+  min-width: 140px;
+}
+
+.GeneralWorkSheetsHeader > div:nth-child(n+3):nth-child(-n+5) {
+  width: 100px;
+  /* background-color: #2ba8fb; */
+}
+.GeneralWorkSheetsHeader > div:first-child {
+  white-space: nowrap;
+}
+.DifferentTable {
+  position: relative;
+  overflow: auto;
+  margin-top: 10px;
+}
+.DifferentTable table {
+  width: 100%;
+  table-layout: fixed;
+  /* border-collapse: collapse; */
+  background-color: white;
+ 
+  height: calc(100vh - 200px);
+}
+
+.DifferentTable >  table  td   {
+  /* all: unset; */
+  border: none;
+  width: 200px;
+  padding: 10px 10px;
+  background-color: white;
+}
+.DifferentTable th {
+  all: unset;
+}
+.DifferentTable > table tr td:last-child {
+  position: sticky;
+  right: 0px;
+  z-index: 4;
+  background-color:white;
+}
+.DifferentTable  table tr td:last-child::after {
+  content: "";
+  width: 1px;
+  left: 0;
+  background-color: #e0e0e0;
+  position: absolute;
+  height: 100%;
+  top:0;
+}
+.DifferentTable > table tr {
+  border: 1px solid #e0e0e0;
+  outline: 1px solid #e0e0e0;
+  border-radius: 3px;
+}
+.DifferentTable .box1 {
+  max-width: 179px;
+}
+
+.RotateGeneral {
+  transform: rotate(180deg);
+  transition: transform 0.1s ease-in-out;
+}
+.CollapseGeneral {
+  transform: rotate(360deg);
+}
+.box5 {
+  margin-top: 10px;
+  box-shadow: 0 0 20px 0 #2426701a;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  /* padding: 2px; */
 }
